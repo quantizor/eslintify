@@ -17,7 +17,7 @@ function r(s) {
 }
 
 function lint(file) {
-  if (!/\.js/.test(file)) return through()
+  if (!/\.js/.test(file) && file != null) return through()
 
   var data = ''
   return through(write, end)
