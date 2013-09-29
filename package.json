@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "through": "*",
+    "jshint": "*"
+  },
   "repository": "git://github.com/goatslacker/jshintify.git",
   "author": "Josh Perez <josh@goatslacker.com>",
   "license": "MIT"
