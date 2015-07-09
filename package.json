@@ -1,16 +1,13 @@
 {
-  "name": "jshintify",
-  "version": "0.1.0",
-  "description": "Stream module for linting JavaScript programs",
+  "name": "eslintify",
+  "version": "0.0.1",
+  "description": "Stream module for verifying JavaScript programs with ESLint.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
-    "through": "*",
-    "jshint": "*"
+    "eslint": "*",
+    "through": "*"
   },
-  "repository": "git://github.com/goatslacker/jshintify.git",
-  "author": "Josh Perez <josh@goatslacker.com>",
+  "repository": "git://github.com/yaycmyk/eslintify.git",
+  "author": "Evan Jacobs <evan@yaycmyk.com>",
   "license": "MIT"
 }

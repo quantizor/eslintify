@@ -1,15 +1,13 @@
-# jshintify
+# eslintify
 
 > Stream module for linting JavaScript programs
 
 ## Install
 
-    npm install jshintify
+    npm install eslintify
 
 ## browserify
 
-    browserify your_file.js -t jshintify
+    browserify your_file.js -t eslintify
 
-## License
-
-[MIT](http://josh.mit-license.org)
+<sub>A loving fork of [jshintify](https://github.com/goatslacker/jshintify)</sub>

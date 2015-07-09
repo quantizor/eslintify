@@ -1,38 +1,32 @@
-module.exports = lint
-
-var jshint = require('jshint').JSHINT
-var through = require('through')
-var error = console.error.bind(console)
-
-var DARK = '\x1b[90m'
-var RED = '\x1b[31m'
-var RESET = '\x1b[39m'
-
-function d(s) {
-  return DARK + s + RESET
-}
-
-function r(s) {
-  return RED + s + RESET
-}
+var eslint = require('eslint');
+var cli = new eslint.CLIEngine();
+var formatter = cli.getFormatter();
+var through = require('through');
+var error = console.error.bind(console);
 
 function lint(file) {
-  if (!/\.js/.test(file) && file != null) return through()
-
-  var data = ''
-  return through(write, end)
-
-  function write(buf) { data += buf }
-  function end() {
-    jshint(data)
-    if (jshint.errors.length) {
-      error('\u2023', file)
-      jshint.errors.filter(Boolean).forEach(function (err) {
-        error('  ', '\u21AA', d(err.line + ':' + err.character), r(err.code), err.reason)
-      })
-      error('')
+    if (!/\.jsx?/.test(file) && file != null) {
+        return through();
     }
-    this.queue(data)
-    this.queue(null)
-  }
+
+    var data = '';
+
+    return through(write, end);
+
+    function write(buf) {
+        data += buf;
+    }
+
+    function end() {
+        var report = cli.executeOnText(data, file);
+
+        if (report.results.length) {
+            error(formatter(report.results));
+        }
+
+        this.queue(data);
+        this.queue(null);
+    }
 }
+
+module.exports = lint;
