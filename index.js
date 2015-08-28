@@ -18,10 +18,12 @@ function lint(file) {
     }
 
     function end() {
-        var report = cli.executeOnText(data, file);
+        var results = eslint.CLIEngine.getErrorResults(
+            cli.executeOnText(data, file).results
+        );
 
-        if (report.results.length) {
-            error(formatter(report.results));
+        if (results.length) {
+            error(formatter(results));
         }
 
         this.queue(data);
