@@ -1,6 +1,6 @@
 {
   "name": "eslintify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stream module for verifying JavaScript programs with ESLint.",
   "main": "index.js",
   "dependencies": {
