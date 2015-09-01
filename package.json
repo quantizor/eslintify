@@ -1,13 +1,17 @@
 {
   "name": "eslintify",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Stream module for verifying JavaScript programs with ESLint.",
-  "main": "index.js",
+  "author": "Evan Jacobs <evan@yaycmyk.com>",
+  "repository": "git://github.com/yaycmyk/eslintify.git",
+  "bugs": "https://github.com/yaycmyk/eslintify/issues",
   "dependencies": {
     "eslint": "*",
     "through": "*"
   },
-  "repository": "git://github.com/yaycmyk/eslintify.git",
-  "author": "Evan Jacobs <evan@yaycmyk.com>",
+  "keywords": [
+    "eslint",
+    "browserify"
+  ],
   "license": "MIT"
 }
