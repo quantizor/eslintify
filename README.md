@@ -9,5 +9,3 @@
 ## browserify
 
     browserify your_file.js -t eslintify
-
-<sub>A loving fork of [jshintify](https://github.com/goatslacker/jshintify)</sub>
