@@ -1,34 +1,38 @@
 var eslint = require('eslint');
-var cli = new eslint.CLIEngine();
-var formatter = cli.getFormatter();
 var through = require('through');
 var error = console.error.bind(console);
 
-function lint(file) {
-    if (!/\.jsx?/.test(file) && file != null) {
-        return through();
-    }
+function getLinter(options, emitErrors) {
+    var cli = new eslint.CLIEngine(options || {});
+    var formatter = cli.getFormatter();
 
-    var data = '';
-
-    return through(write, end);
-
-    function write(buf) {
-        data += buf;
-    }
-
-    function end() {
-        var results = eslint.CLIEngine.getErrorResults(
-            cli.executeOnText(data, file).results
-        );
-
-        if (results.length) {
-            error(formatter(results));
+    return function lint(file) {
+        if (!/\.jsx?/.test(file) && file != null) {
+            return through();
         }
 
-        this.queue(data);
-        this.queue(null);
+        var data = '';
+
+        return through(write, end);
+
+        function write(buf) {
+            data += buf;
+        }
+
+        function end() {
+            var results = eslint.CLIEngine.getErrorResults(
+                cli.executeOnText(data, file).results
+            );
+
+            if (results.length) {
+                error(formatter(results));
+                emitErrors && this.emit('error', new Error('Lint errors'));
+            }
+
+            this.queue(data);
+            this.queue(null);
+        }
     }
 }
 
-module.exports = lint;
+module.exports = getLinter;
