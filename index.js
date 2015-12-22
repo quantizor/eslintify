@@ -1,17 +1,11 @@
 var eslint = require('eslint');
-var cli = new eslint.CLIEngine();
-var formatter = cli.getFormatter();
 var through = require('through');
 var error = console.error.bind(console);
 
-function lint(file) {
-    if (!/\.jsx?/.test(file) && file != null) {
-        return through();
-    }
-
+function lint(file, options) {
+    var cli = new eslint.CLIEngine(options || {});
+    var formatter = cli.getFormatter();
     var data = '';
-
-    return through(write, end);
 
     function write(buf) {
         data += buf;
@@ -24,11 +18,18 @@ function lint(file) {
 
         if (results.length) {
             error(formatter(results));
+            this.emit('error', 'eslintify: linting errors detected.');
         }
 
         this.queue(data);
         this.queue(null);
     }
+
+    if (!/\.(js|jsx|es6)/.test(file) && file !== null) {
+        return through();
+    }
+
+    return through(write, end);
 }
 
 module.exports = lint;
