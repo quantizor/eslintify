@@ -18,7 +18,10 @@ function lint(file, options) {
 
         if (results.length) {
             error(formatter(results));
-            this.emit('error', 'eslintify: linting errors detected.');
+
+            if (!options.continuous) {
+                this.emit('error', 'eslintify: linting error(s) detected.');
+            }
         }
 
         this.queue(data);
