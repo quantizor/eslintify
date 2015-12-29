@@ -28,7 +28,7 @@ function lint(file, options) {
         this.queue(null);
     }
 
-    if (!/\.(js|jsx|es6)/.test(file) && file !== null) {
+    if (!/\.(js|jsx|es6)$/.test(file) && file !== null) {
         return through();
     }
 
