@@ -1,3 +1,9 @@
+1.0.1 (December 29, 2015)
+
+Fixed checking for files that only end with certain JS-relevant extensions.
+
+---
+
 1.0.0 (December 22, 2015)
 
 __Breaking Change:__ eslintify now breaks the build by default on detected errors
