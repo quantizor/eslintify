@@ -12,16 +12,15 @@ function lint(file, options) {
     }
 
     function end() {
-        var results = eslint.CLIEngine.getErrorResults(
-            cli.executeOnText(data, file).results
-        );
+        var results = cli.executeOnText(data, file).results;
 
-        if (results.length) {
+        if (results.length && results.some(function (r) { return r.errorCount || r.warningCount; })) {
             error(formatter(results));
+        }
 
-            if (!options.continuous) {
-                this.emit('error', 'eslintify: linting error(s) detected.');
-            }
+        var errorResults = eslint.CLIEngine.getErrorResults(results);
+        if (errorResults.length && !options.continuous) {
+            this.emit('error', 'eslintify: linting error(s) detected.');
         }
 
         this.queue(data);
