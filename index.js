@@ -28,7 +28,9 @@ function lint(file, options) {
         this.queue(null);
     }
 
-    if (!/\.(js|jsx|es6)$/.test(file) && file !== null) {
+    var extensions = ['js', 'jsx', 'es6'].concat(options.extension || []);
+    var filesRegExp = options.filesRegExp ? new RegExp(options.filesRegExp) : /\.(js|jsx|es6)$/;
+    if (file !== null && !extensions.some(function (ext) { return '.' + ext == file.substr(-1 - ext.length); })) {
         return through();
     }
 
