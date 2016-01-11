@@ -28,11 +28,21 @@ function lint(file, options) {
         this.queue(null);
     }
 
-    if (!/\.(js|jsx|es6)$/.test(file) && file !== null) {
+    if (typeof file !== 'string' || file.lastIndexOf('.') === -1) {
         return through();
     }
 
-    return through(write, end);
+    var givenExtension = file.slice(file.lastIndexOf('.') + 1, file.length);
+    var supportedExtensions = ['js', 'jsx', 'es6'];
+
+    if (options.extension) { supportedExtensions.concat(options.extension); }
+    if (options.extensions) { supportedExtensions.concat(options.extensions); }
+
+    if (supportedExtensions.indexOf(givenExtension) !== -1) {
+        return through(write, end);
+    }
+
+    return through();
 }
 
 module.exports = lint;
