@@ -24,12 +24,12 @@ browserify your_file.js -t [ eslintify --continuous ]
 
 ### included files
 
-If you wish to lint files with extensions other than `*.js *.jsx *.es6`, add `extension` options (in object form, supply a string or array of strings):
+If you wish to lint files with extensions other than `*.js *.jsx *.es6`, add `extension` options. In object form, supply an `extension` string or `extensions` array:
 
 ```bash
 browserify your_file.js -t [ eslintify --extension html --extension haml ]
 ```
 
 ```JavaScript
-.transform({ extension: ['html', 'haml'] }, eslintify)
+.transform({ extensions: ['html', 'haml'] }, eslintify)
 ```
