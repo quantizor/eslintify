@@ -1,6 +1,13 @@
+1.1.0 (January 13, 2016)
+
+- Enhancement: allow inclusion of non-(js|jsx|es6) files via `opts.extensions` or the `--extension` CLI flag
+- Fix: now properly shows warnings (3d89b01bb5f0dbf7904076847339f4aaf45b62f1)
+
+---
+
 1.0.1 (December 29, 2015)
 
-Fixed checking for files that only end with certain JS-relevant extensions.
+- Fixed checking for files that only end with certain JS-relevant extensions.
 
 ---
 
