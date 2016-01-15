@@ -34,8 +34,8 @@ function lint(file, options) {
     var givenExtension = file.slice(file.lastIndexOf('.') + 1, file.length);
     var supportedExtensions = ['js', 'jsx', 'es6'];
 
-    if (options.extension) { supportedExtensions.concat(options.extension); }
-    if (options.extensions) { supportedExtensions.concat(options.extensions); }
+    if (options.extension) { supportedExtensions = supportedExtensions.concat(options.extension); }
+    if (options.extensions) { supportedExtensions = supportedExtensions.concat(options.extensions); }
 
     if (supportedExtensions.indexOf(givenExtension) !== -1) {
         return through(write, end);
