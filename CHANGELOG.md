@@ -1,3 +1,9 @@
+1.1.1 (January 15, 2016)
+
+- fix: assign output of Array.prototype.concat() (15d2face7b23e87dd45f1dce039f513a6ab71975)
+
+---
+
 1.1.0 (January 13, 2016)
 
 - Enhancement: allow inclusion of non-(js|jsx|es6) files via `opts.extensions` or the `--extension` CLI flag
