@@ -1,3 +1,11 @@
+2.0.0 (March 2, 2016)
+
+- Update to eslint@2.x
+- Switch default formatter to https://github.com/royriojas/eslint-friendly-formatter
+- Add "formatter" option flag to use a built-in eslint formatter if desired
+
+---
+
 1.1.1 (January 15, 2016)
 
 - fix: assign output of Array.prototype.concat() (15d2face7b23e87dd45f1dce039f513a6ab71975)

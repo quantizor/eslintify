@@ -1,12 +1,12 @@
 {
   "name": "eslintify",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Stream module for verifying JavaScript programs with ESLint.",
   "author": "Evan Jacobs <evan@yaycmyk.com> (http://yaycmyk.com)",
   "repository": "git://github.com/yaycmyk/eslintify.git",
   "bugs": "https://github.com/yaycmyk/eslintify/issues",
   "dependencies": {
-    "eslint": "^1.0.0",
+    "eslint": "^2.0.0",
     "eslint-friendly-formatter": "^1.2.2",
     "through": "^2.0.0"
   },
