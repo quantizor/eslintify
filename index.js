@@ -3,8 +3,10 @@ var through = require('through');
 var error = console.error.bind(console);
 
 function lint(file, options) {
-    var cli = new eslint.CLIEngine(options || {});
-    var formatter = cli.getFormatter();
+    options = options || {};
+
+    var cli = new eslint.CLIEngine(options);
+    var formatter = cli.getFormatter(options.formatter || __dirname + '/node_modules/eslint-friendly-formatter');
     var data = '';
 
     function write(buf) {
