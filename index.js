@@ -6,7 +6,7 @@ function lint(file, options) {
     options = options || {};
 
     var cli = new eslint.CLIEngine(options);
-    var formatter = cli.getFormatter(options.formatter || __dirname + '/node_modules/eslint-friendly-formatter');
+    var formatter = cli.getFormatter(options.formatter || require.resolve('eslint-friendly-formatter'));
     var data = '';
 
     function write(buf) {
