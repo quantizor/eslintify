@@ -1,3 +1,9 @@
+2.0.1 (March 2, 2016)
+
+- fix require path resolution of the default formatter
+
+---
+
 2.0.0 (March 2, 2016)
 
 - Update to eslint@2.x
