@@ -16,6 +16,17 @@ function lint(file, options) {
     function end() {
         var results = cli.executeOnText(data, file).results;
 
+        //weed out warnings about eslint ignored files that may be piped thru (like from node or bower)
+        results.forEach(function (result) {
+            result.messages = result.messages.filter(function (message) {
+                var isIgnored = !message.fatal && message.message.indexOf('--no-ignore') !== -1;
+                if (isIgnored) {
+                    result.warningCount--;
+                }
+                return !isIgnored;
+            });
+        });
+
         if (results.length && results.some(function (r) { return r.errorCount || r.warningCount; })) {
             error(formatter(results));
         }
