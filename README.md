@@ -14,6 +14,14 @@ npm install eslintify
 browserify your_file.js -t eslintify
 ```
 
+### "quiet" mode
+
+Functionally equivalent to the [ESLint CLI](http://eslint.org/docs/user-guide/command-line-interface) flag `--quiet`: it causes warnings to be silently ignored. The default is for warnings to be outputted along with errors.
+
+```bash
+browserify your_file.js -t [ eslintify --quiet ]
+```
+
 ### "continuous" mode
 
 If you wish to get linting reports in the console but not break the build, enable "continuous mode" like so:
