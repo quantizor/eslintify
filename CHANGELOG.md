@@ -1,3 +1,9 @@
+2.1.0 (May 30, 2016)
+
+- __Add quiet mode via `--quiet` flag__ (b203e9c918e9f2aefafde4af80cd89ae294fc7b7) The implementation exactly matches how ESLint handles this behavior in their CLI.
+
+---
+
 2.0.1 (March 2, 2016)
 
 - fix require path resolution of the default formatter
