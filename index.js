@@ -20,7 +20,7 @@ function lint(file, options) {
     }
 
     function end() {
-        var results = cli.executeOnText(data, file).results;
+        var results = cli.executeOnText(data, file, false).results;
 
         if (options.quiet) {
             results = eslint.CLIEngine.getErrorResults(results);
