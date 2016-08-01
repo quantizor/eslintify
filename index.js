@@ -7,6 +7,10 @@ function hasCount(result) {
     return result.errorCount || result.warningCount;
 }
 
+function hasErrorCount(result) {
+    return result.errorCount;
+}
+
 function lint(file, options) {
     options = options || {};
     options.formatter = options.formatter || default_formatter;
@@ -26,7 +30,7 @@ function lint(file, options) {
             results = eslint.CLIEngine.getErrorResults(results);
         } // filter out warnings
 
-        if (results.length && results.some(hasCount)) {
+        if (results.length && results.some(options.nonFatalWarnings ? hasErrorCount : hasCount)) {
             error(formatter(results));
 
             if (!options.continuous) {
