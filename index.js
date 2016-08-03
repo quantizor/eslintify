@@ -30,10 +30,10 @@ function lint(file, options) {
             results = eslint.CLIEngine.getErrorResults(results);
         } // filter out warnings
 
-        if (results.length && results.some(options.nonFatalWarnings ? hasErrorCount : hasCount)) {
+        if (results.length && results.some(hasCount)) {
             error(formatter(results));
 
-            if (!options.continuous) {
+            if (!options.continuous && (!options.nonFatalWarnings || results.some(hasErrorCount))) {
                 this.emit('error', 'eslintify: linting error(s) detected.');
             }
         }
