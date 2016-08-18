@@ -6,8 +6,8 @@
   "repository": "git://github.com/yaycmyk/eslintify.git",
   "bugs": "https://github.com/yaycmyk/eslintify/issues",
   "dependencies": {
-    "eslint": "^2.0.0",
-    "eslint-friendly-formatter": "^1.2.2",
+    "eslint": "^3.0.0",
+    "eslint-friendly-formatter": "^2.0.0",
     "through": "^2.0.0"
   },
   "keywords": [
