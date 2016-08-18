@@ -7,6 +7,10 @@ function hasCount(result) {
     return result.errorCount || result.warningCount;
 }
 
+function hasErrorCount(result) {
+    return result.errorCount;
+}
+
 function lint(file, options) {
     options = options || {};
     options.formatter = options.formatter || default_formatter;
@@ -29,7 +33,7 @@ function lint(file, options) {
         if (results.length && results.some(hasCount)) {
             error(formatter(results));
 
-            if (!options.continuous) {
+            if (!options.continuous && (!options.nonFatalWarnings || results.some(hasErrorCount))) {
                 this.emit('error', 'eslintify: linting error(s) detected.');
             }
         }
