@@ -1,3 +1,8 @@
+3.0.0 (August 18, 2016)
+
+- __Introduce `--quiet-ignored` flag__ (94a7a35bce429a2980e1ba05052fb13909cd52b8) This flag is an alternative to `--quiet`, which suppresses _all_ warnings, rather than just "ignored files".
+- __eslint 3.x__ (8e758b9426979f44ec7790b2d46f90cf73e862e2)
+
 2.1.0 (May 30, 2016)
 
 - __Add quiet mode via `--quiet` flag__ (b203e9c918e9f2aefafde4af80cd89ae294fc7b7) The implementation exactly matches how ESLint handles this behavior in their CLI.

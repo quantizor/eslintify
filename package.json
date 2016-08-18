@@ -1,6 +1,6 @@
 {
   "name": "eslintify",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Stream module for verifying JavaScript programs with ESLint.",
   "author": "Evan Jacobs <evan@yaycmyk.com> (http://yaycmyk.com)",
   "repository": "git://github.com/yaycmyk/eslintify.git",

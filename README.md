@@ -8,6 +8,8 @@ __Stream module for linting JavaScript programs.__
 npm install eslintify
 ```
 
+The major version number of eslintify is tied to `eslint`, so if you want to use `eslint@3`, install `eslintify@3`.
+
 ## browserify
 
 ```bash
