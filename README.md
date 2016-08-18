@@ -16,10 +16,20 @@ browserify your_file.js -t eslintify
 
 ### "quiet" mode
 
-Functionally equivalent to the [ESLint CLI](http://eslint.org/docs/user-guide/command-line-interface) flag `--quiet`: it causes warnings to be silently ignored. The default is for warnings to be outputted along with errors.
+Functionally equivalent to the [ESLint CLI](http://eslint.org/docs/user-guide/command-line-interface) flag `--quiet`: it causes _all_ warnings to be silently ignored. The default is for warnings to be outputted along with errors.
 
 ```bash
 browserify your_file.js -t [ eslintify --quiet ]
+```
+
+If you only wish to suppress "ignored file" warnings, use the `--quiet-ignored` flag instead.
+
+### "ignored file" warnings
+
+If you choose to exclude files via `.eslintignore` or elsewhere and the linter is run over them (due to them being in the globbing path), it will produce a warning. `eslint@3` introduced a way for these unnecessary warnings to be suppressed; the implementation in this module is as follows:
+
+```bash
+browserify your_file.js -t [ eslintify --quiet-ignored ]
 ```
 
 ### "continuous" mode
