@@ -3,8 +3,19 @@ var through = require('through');
 var error = console.error.bind(console);
 var default_formatter = require.resolve('eslint-friendly-formatter');
 
-function hasCount(result) {
+var ERRORS = 'errors';
+var WARNINGS = 'warnings';
+
+function haveIssues(result) {
     return result.errorCount || result.warningCount;
+}
+
+function haveErrors(result) {
+    return result.errorCount;
+}
+
+function haveWarnings(result) {
+    return result.warningCount;
 }
 
 function lint(file, options) {
@@ -26,11 +37,29 @@ function lint(file, options) {
             results = eslint.CLIEngine.getErrorResults(results);
         } // filter out warnings
 
-        if (results.length && results.some(hasCount)) {
+        if (results.length && results.some(haveIssues)) {
+            var passthrough = options.passthrough ? Array.prototype.concat(options.passthrough) : [];
+            var shouldBreakBuild = false;
+
+            if (passthrough.length) {
+                var errorsAllowed = passthrough.indexOf(ERRORS) !== -1;
+                var warningsAllowed = passthrough.indexOf(WARNINGS) !== -1;
+
+                if (
+                       (!errorsAllowed   && !warningsAllowed)
+                    || (!errorsAllowed   && results.some(haveErrors))
+                    || (!warningsAllowed && results.some(haveWarnings))
+                ) {
+                    shouldBreakBuild = true;
+                }
+            } else if (!options.continuous) {
+                shouldBreakBuild = true;
+            }
+
             error(formatter(results));
 
-            if (!options.continuous) {
-                this.emit('error', 'eslintify: linting error(s) detected.');
+            if (shouldBreakBuild) {
+                this.emit('error', 'eslintify: linting issues(s) detected.');
             }
         }
 
