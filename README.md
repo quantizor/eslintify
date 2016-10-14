@@ -4,8 +4,8 @@ __Stream module for linting JavaScript programs.__
 
 ---
 
-* [Install](#install)
-  * [browserify](#browserify)
+* [installation](#installation)
+* [browserify](#browserify)
     + ["quiet" mode](#-quiet--mode)
     + ["ignored file" warnings](#-ignored-file--warnings)
     + [setting when to break the build](#setting-when-to-break-the-build)
@@ -15,10 +15,10 @@ __Stream module for linting JavaScript programs.__
 
 ---
 
-## Install
+## installation
 
 ```bash
-npm install eslintify
+npm install eslintify --save-dev
 ```
 
 The major version number of eslintify is tied to `eslint`, so if you want to use `eslint@3`, install `eslintify@3`.
