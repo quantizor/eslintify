@@ -1,5 +1,7 @@
 # eslintify
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/yaycmyk/eslintify.svg)](https://greenkeeper.io/)
+
 __Stream module for linting JavaScript programs.__
 
 ---
